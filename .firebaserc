@@ -1,6 +1,7 @@
 {
   "projects": {
-    "staging": "trume-staging-419120"
+    "staging": "trume-staging-419120",
+    "default": "trume-staging-419120"
   },
   "targets": {
     "trume-staging-419120": {
