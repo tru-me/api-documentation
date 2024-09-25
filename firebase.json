@@ -10,8 +10,8 @@
       ],
       "rewrites": [
         {
-          "source": "**",
-          "run": "nextApp"
+          "source": "/**",
+          "function": "nextApp"
         }
       ]
     },
@@ -25,13 +25,14 @@
       ],
       "rewrites": [
         {
-          "source": "**",
-          "run": "nextApp"
+          "source": "/**",
+          "function": "nextApp"
         }
       ]
     }
   ],
   "functions": {
-    "source": "functions"
+    "source": "functions",
+    "region": "us-west1"
   }
 }

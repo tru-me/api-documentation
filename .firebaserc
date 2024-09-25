@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "staging": "trume-staging-419120"
+  },
+  "targets": {
+    "trume-staging-419120": {
+      "hosting": {
+        "documentation-staging": [
+          "documentation-staging"
+        ]
+      }
+    }
+  },
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}
