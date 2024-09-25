@@ -1,16 +1,26 @@
 {
-  "hosting": {
-    "public": "build",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+  "hosting": [{
+    "public": ".next",
+    "site": "documentation-main",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
         "source": "**",
-        "destination": "/index.html"
+        "destination": "next"
       }
     ]
+  }, {
+      "public": ".next",
+      "site": "documentation-staging",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "next"
+        }
+      ]
+    }],
+  "functions": {
+    "source": "functions"
   }
 }
