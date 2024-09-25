@@ -69,7 +69,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         <meta name="title" content={title} />
         <meta name="description" content={description} />
         <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <TopNav>
         <Link href="/docs">Docs</Link>

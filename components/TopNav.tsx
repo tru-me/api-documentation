@@ -1,11 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
+import Logo from '../images/logo-white.svg'
+
+import Image from 'next/image'
 
 export function TopNav({children}) {
   return (
     <nav>
       <Link href="/" className="flex">
-        Home
+        <Image src={Logo} alt="logo" height={40} width={90} />
       </Link>
       <section>{children}</section>
       <style jsx>
