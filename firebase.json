@@ -1,25 +1,36 @@
 {
-  "hosting": [{
-    "public": ".next",
-    "site": "documentation-main",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "next"
-      }
-    ]
-  }, {
+  "hosting": [
+    {
+      "target": "documentation-main",
       "public": ".next",
-      "site": "documentation-staging",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
       "rewrites": [
         {
           "source": "**",
-          "destination": "next"
+          "run": "nextApp"
         }
       ]
-    }],
+    },
+    {
+      "target": "documentation-staging",
+      "public": ".next",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "run": "nextApp"
+        }
+      ]
+    }
+  ],
   "functions": {
     "source": "functions"
   }
