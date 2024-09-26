@@ -8,6 +8,8 @@ All requests to the API require authentication in the `App-Key` header.
 App-Key: YOUR_TOKEN
 ```
 
+**Contact Trume to provide your Token.**
+
 ## Hosts
 **Production**: `https://api.trumelabs.com`  
 **Staging**: `https://api-staging.trumelabs.com`  
