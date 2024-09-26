@@ -9,8 +9,8 @@ App-Key: YOUR_TOKEN
 ```
 
 ## Hosts
-Production: https://api.trumelabs.com
-Staging: https://api-staging.trumelabs.com
+**Production**: https://api.trumelabs.com
+**Staging**: https://api-staging.trumelabs.com
 
 ## Endpoints
 

@@ -14,8 +14,8 @@ import '../public/globals.css'
 import type { AppProps } from 'next/app'
 import type { MarkdocNextJsPageProps } from '@markdoc/next.js'
 
-const TITLE = 'Markdoc';
-const DESCRIPTION = 'A powerful, flexible, Markdown-based authoring framework';
+const TITLE = 'TrumeLabs Docs';
+const DESCRIPTION = 'A quick guide about our API';
 
 function collectHeadings(node, sections = []) {
   if (node) {
@@ -72,7 +72,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         <link rel="icon" href="/favicon.svg" />
       </Head>
       <TopNav>
-        <Link href="/docs">Docs</Link>
+        <Link href="/docs">TrumeLabs Docs</Link>
       </TopNav>
       <div className="page">
         <SideNav />
