@@ -8,6 +8,10 @@ All requests to the API require authentication in the `App-Key` header.
 App-Key: YOUR_TOKEN
 ```
 
+## Hosts
+Production: https://api.trumelabs.com
+Staging: https://api-staging.trumelabs.com
+
 ## Endpoints
 
 ### `GET /v1/user`
