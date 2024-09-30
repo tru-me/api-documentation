@@ -36,7 +36,7 @@ Retrieves a user information by ID or Email.
 #### Example Request
 
 ```bash
-curl -X GET "https://api.example.com/v1/user?id=PvRoVxxiJ2gul3qLwKOVaJ0HCNs1" \
+curl -X GET "https://<ENVIRONMENT_URL>/v1/user?id=PvRoVxxiJ2gul3qLwKOVaJ0HCNs1" \
 -H "App-Key: YOUR_TOKEN"
 ```
 
@@ -65,6 +65,87 @@ curl -X GET "https://api.example.com/v1/user?id=PvRoVxxiJ2gul3qLwKOVaJ0HCNs1" \
 			"barcode": "TU33NQ34"
 		}
 	]
+}
+```
+&nbsp;
+### `GET /v1/results`
+
+Retrieves a user results by user Id or Email.
+
+#### Request
+
+**URL**: `/v1/results`  
+**Method**: `GET`  
+**Authentication**: Required
+
+#### Parameters
+
+| Parameter | Type   | Description        |
+| --------- | ------ | ------------------ |
+| `id`      | string | The user ID        |
+| `email`      | string | The user Email        |
+
+#### Example Request
+
+```bash
+curl -X GET "https://<ENVIRONMENT_URL>/v1/results?id=PvRoVxxiJ2gul3qLwKOVaJ0HCNs1" \
+-H "App-Key: YOUR_TOKEN"
+```
+
+#### Response
+
+```json
+{
+	"results": [
+		{
+			"biological_age": 30.0,
+			"collection_date": "2024-09-24T20:37:24.218933",
+			"chronological_age": 113.95,
+			"kit_bar_code": "TEST",
+			"share_link": "https://<APP_ENVIRONMENT_URL>/share/xtNvaoS11vcyP"
+		},
+		{
+			"biological_age": 40.0,
+			"collection_date": "2024-09-25T15:57:21.851656",
+			"chronological_age": 113.95,
+			"kit_bar_code": "TEST2",
+			"share_link": "https://<APP_ENVIRONMENT_URL>/share/VaRwaoS11vcyP"
+		}
+	],
+	"gender": "Female",
+	"ethnicity": "White"
+}
+```
+
+&nbsp;
+### `GET /v1/report`
+
+Retrieves a report URL by barcode.
+
+#### Request
+
+**URL**: `/v1/report`  
+**Method**: `GET`  
+**Authentication**: Required
+
+#### Parameters
+
+| Parameter | Type   | Description        |
+| --------- | ------ | ------------------ |
+| `barcode`      | string | The kit barcode |
+
+#### Example Request
+
+```bash
+curl -X GET "https://<ENVIRONMENT_URL>/v1/report?barcode=TEST" \
+-H "App-Key: YOUR_TOKEN"
+```
+
+#### Response
+
+```json
+{
+	"url": "https://<REPORT_URL>"
 }
 ```
 ---
