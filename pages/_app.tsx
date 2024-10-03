@@ -72,7 +72,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         <link rel="icon" href="/favicon.svg" />
       </Head>
       <TopNav>
-        <Link href="/docs">TrumeLabs Docs</Link>
+        <Link href="/api">TrumeLabs Docs</Link>
       </TopNav>
       <div className="page">
         <SideNav />
