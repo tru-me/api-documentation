@@ -117,37 +117,6 @@ curl -X GET "https://<ENVIRONMENT_URL>/v1/results?id=PvRoVxxiJ2gul3qLwKOVaJ0HCNs
 }
 ```
 
-&nbsp;
-### `GET /v1/report`
-
-Retrieves a report URL by barcode.
-
-#### Request
-
-**URL**: `/v1/report`  
-**Method**: `GET`  
-**Authentication**: Required
-
-#### Parameters
-
-| Parameter | Type   | Description        |
-| --------- | ------ | ------------------ |
-| `barcode`      | string | The kit barcode |
-
-#### Example Request
-
-```bash
-curl -X GET "https://<ENVIRONMENT_URL>/v1/report?barcode=TEST" \
--H "App-Key: YOUR_TOKEN"
-```
-
-#### Response
-
-```json
-{
-	"url": "https://<REPORT_URL>"
-}
-```
 ---
 
 ## Error Codes

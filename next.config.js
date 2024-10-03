@@ -6,8 +6,8 @@ module.exports =
     async rewrites() {
       return [
         {
-          source: '/api',        // Requests to /api
-          destination: '/api-docs', // Serve the page at /api-docs
+          source: '/api',
+          destination: '/docs',
         },
       ];
     },
