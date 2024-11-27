@@ -8,7 +8,7 @@ All requests to the API require authentication in the `App-Key` header.
 App-Key: YOUR_TOKEN
 ```
 
-**Contact Trume to provide your Token.**
+**Contact Trumelabs to provide your Token.**
 
 ## Hosts
 **Production**: `https://api.trumelabs.com`  
@@ -28,10 +28,17 @@ Retrieves a user information by ID or Email.
 
 #### Parameters
 
-| Parameter | Type   | Description        |
-| --------- | ------ | ------------------ |
-| `id`      | string | The user ID        |
-| `email`      | string | The user Email        |
+- **`first_name`** (string, Required):  
+  - **Description**: The user's first name.
+
+- **`last_name`** (string, Required):  
+  - **Description**: The user's last name.
+
+- **`email`** (string, Required):  
+  - **Description**: The user's email.
+
+- **`date_of_birth`** (isodate, Required):  
+  - **Description**: User's date of birth.
 
 #### Example Request
 
@@ -67,6 +74,52 @@ curl -X GET "https://<ENVIRONMENT_URL>/v1/user?id=PvRoVxxiJ2gul3qLwKOVaJ0HCNs1" 
 	]
 }
 ```
+
+&nbsp;
+### `POST /v1/user`
+
+Creates a new TruMe user.
+
+#### Request
+
+**URL**: `/v1/user`  
+**Method**: `POST`  
+**Authentication**: Required
+
+#### Parameters
+
+- **`first_name`** (string): 
+  - **Description**: The user's first name.
+
+- **`last_name`** (string): 
+  - **Description**: The user's last name.
+
+- **`email`** (string): 
+  - **Description**: The user's email.
+
+- **`date_of_birth`** (isodate): 
+  - **Description**: User's date of birth.
+
+- **`allow_trume_login`** (boolean, Optional): 
+  - **Description**: If true, dispatches an email for TruMe password creation.
+
+
+#### Example Request
+
+```bash
+curl -X GET "https://<ENVIRONMENT_URL>/v1/user" \
+-H "App-Key: YOUR_TOKEN"
+```
+
+#### Response
+
+```json
+{
+	"user_id": "PvRoVxxiJ2gul3qLwKOVaJ0HCNs1"
+}
+```
+
+
 &nbsp;
 ### `GET /v1/results`
 
@@ -80,10 +133,11 @@ Retrieves a user results by user Id or Email.
 
 #### Parameters
 
-| Parameter | Type   | Description        |
-| --------- | ------ | ------------------ |
-| `id`      | string | The user ID        |
-| `email`      | string | The user Email        |
+- **`id`** (string, Required):  
+  - **Description**: The user ID.
+
+- **`email`** (string, Required):  
+  - **Description**: The user email.
 
 #### Example Request
 
