@@ -186,7 +186,7 @@ curl -X GET "https://<ENVIRONMENT_URL>/v1/user?id=PvRoVxxiJ2gul3qLwKOVaJ0HCNs1" 
 ```
 
 &nbsp;
-### `POST /v1/kits`
+### `POST /v1/kits` (Only staging yet)
 
 Creates a new kit.
 
@@ -294,7 +294,7 @@ curl --request POST \
 Empty
 
 &nbsp;
-### `PATCH /v1/kits/{barcode}`
+### `PATCH /v1/kits/{barcode}` (Only staging yet)
 
 Update an kit.
 
