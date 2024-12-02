@@ -16,7 +16,6 @@ App-Key: YOUR_TOKEN
 
 ## Endpoints
 
-&nbsp;
 ### `POST /v1/user`
 
 Creates a new TruMe user.
@@ -190,6 +189,10 @@ curl -X GET "https://<ENVIRONMENT_URL>/v1/user?id=PvRoVxxiJ2gul3qLwKOVaJ0HCNs1" 
 
 Creates a new kit.
 
+*IMPORTANT: Apart from barcode, user_id, and registered_at the remaining parameters represent patient data linked to the kit. If this information is not available at the moment, you can update it later using the PATCH endpoint.*
+
+*The **barcode**, also referred to as the kit number, must adhere to the format AAA-XXXXX. The first three characters should be letters representing the company name, followed by a combination of letters and/or numbers of any length.*
+
 #### Request
 
 **URL**: `/v1/kits`  
@@ -198,11 +201,16 @@ Creates a new kit.
 
 #### Parameters
 
-- **`kit_number`** (string, Required): 
+*The patient data parameters are: height_feet, height_inches, weight, overall_health, mental_health, social_life, stress, has_cancer, has_diabetes, medicine_consumption, supplement_consumption, coffee_consumption, tobacco_consumption, waking_up_condition, trouble_sleeping, alcohol_consumption, sleep_hours, physical_activity_days*
+
+- **`barcode`** (string, Required): 
   - **Description**: The kit number/barcode.
 
 - **`user_id`** (string, Required): 
   - **Description**: The user's id.
+
+- **`registered_at`** (datetime, Optional):
+	- **Description**: e.g: 2024-11-27T10:00:00
 
 - **`height_feet`** (float, Optional)
 
@@ -255,9 +263,6 @@ Creates a new kit.
 - **`physical_activity_days`** (string, Optional):
 	- **Description**: ['0', '1', '2', '3', '4', '5', '+6']
 
-- **`registered_at`** (datetime, Optional):
-	- **Description**: e.g: 2024-11-27T10:00:00
-
 #### Example Request
 
 ```bash
@@ -266,7 +271,7 @@ curl --request POST \
   --header 'App-Key: YOUR-TOKEN' \
   --header 'Content-Type: application/json' \
   --data '{
-	"kit_number": "TEST1234",
+	"barcode": "TEST1234",
 	"user_id": "vd7KETc6UHuGbeMRv9EnFdEh0mfD",
 	"height_feet": 5.0,
 	"height_inches": 70.0,
@@ -296,7 +301,7 @@ Empty
 &nbsp;
 ### `PATCH /v1/kits/{barcode}` (Only staging yet)
 
-Update an kit.
+Update a kit information (registered_at) and patient data attached to the kit.
 
 #### Request
 
@@ -306,6 +311,12 @@ Update an kit.
 
 #### Parameters
 
+*The patient data parameters are: height_feet, height_inches, weight, overall_health, mental_health, social_life, stress, has_cancer, has_diabetes, medicine_consumption, supplement_consumption, coffee_consumption, tobacco_consumption, waking_up_condition, trouble_sleeping, alcohol_consumption, sleep_hours, physical_activity_days*
+
+*The **barcode**, also referred to as the kit number, must adhere to the format AAA-XXXXX. The first three characters should be letters representing the company name, followed by a combination of letters and/or numbers of any length.*
+
+- **`registered_at`** (datetime, Optional):
+	- **Description**: The datetime when the kit was registered. e.g: 2024-11-27T10:00:00
 - **`height_feet`** (float, Optional)
 
 - **`height_inches`** (float, Optional)
@@ -356,9 +367,6 @@ Update an kit.
 
 - **`physical_activity_days`** (string, Optional):
 	- **Description**: ['0', '1', '2', '3', '4', '5', '+6']
-
-- **`registered_at`** (datetime, Optional):
-	- **Description**: e.g: 2024-11-27T10:00:00
 
 #### Example Request
 
@@ -403,6 +411,8 @@ curl -X GET "https://<ENVIRONMENT_URL>/v1/results?id=PvRoVxxiJ2gul3qLwKOVaJ0HCNs
 ```
 
 #### Response
+
+*The peer_biological_age_score reflects how the user’s performance compares to that of their peers.*
 
 ```json
 {
