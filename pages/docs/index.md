@@ -187,15 +187,13 @@ curl -X GET "https://<ENVIRONMENT_URL>/v1/user?id=PvRoVxxiJ2gul3qLwKOVaJ0HCNs1" 
 &nbsp;
 ### `POST /v1/kits` (Only staging yet)
 
-Creates a new kit.
+Assign a kit to an user
 
 *IMPORTANT: Apart from barcode, user_id, and registered_at the remaining parameters represent patient data linked to the kit. If this information is not available at the moment, you can update it later using the PATCH endpoint.*
 
-*The **barcode**, also referred to as the kit number, must adhere to the format AAA-XXXXX. The first three characters should be letters representing the company name, followed by a combination of letters and/or numbers of any length.*
-
 #### Request
 
-**URL**: `/v1/kits`  
+**URL**: `/v1/kits/{barcode}/register`  
 **Method**: `POST`  
 **Authentication**: Required
 
@@ -267,7 +265,7 @@ Creates a new kit.
 
 ```bash
 curl --request POST \
-  --url 'http://<ENVIRONMENT_URL>/v1/kits' \
+  --url 'http://<ENVIRONMENT_URL>/v1/kits/TEST123/register' \
   --header 'App-Key: YOUR-TOKEN' \
   --header 'Content-Type: application/json' \
   --data '{
@@ -312,8 +310,6 @@ Update a kit information (registered_at) and patient data attached to the kit.
 #### Parameters
 
 *The patient data parameters are: height_feet, height_inches, weight, overall_health, mental_health, social_life, stress, has_cancer, has_diabetes, medicine_consumption, supplement_consumption, coffee_consumption, tobacco_consumption, waking_up_condition, trouble_sleeping, alcohol_consumption, sleep_hours, physical_activity_days*
-
-*The **barcode**, also referred to as the kit number, must adhere to the format AAA-XXXXX. The first three characters should be letters representing the company name, followed by a combination of letters and/or numbers of any length.*
 
 - **`registered_at`** (datetime, Optional):
 	- **Description**: The datetime when the kit was registered. e.g: 2024-11-27T10:00:00
@@ -372,7 +368,7 @@ Update a kit information (registered_at) and patient data attached to the kit.
 
 ```bash
 curl --request PATCH \
-  --url 'http://<ENVIRONMENT_URL>/v1/kits/TEST123?=' \
+  --url 'http://<ENVIRONMENT_URL>/v1/kits/TEST123' \
   --header 'App-Key: YOUR-TOKEN' \
   --header 'Content-Type: application/json' \
   --data '{
