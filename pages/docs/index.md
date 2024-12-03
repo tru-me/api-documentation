@@ -16,7 +16,7 @@ App-Key: YOUR_TOKEN
 
 ## Endpoints
 
-### `POST /v1/user`
+### Create user
 
 Creates a new TruMe user.
 
@@ -83,7 +83,7 @@ curl --request POST \
 ```
 
 &nbsp;
-### `GET /v1/user`
+### Retrieve an user
 
 Retrieves a user information by ID or Email.
 
@@ -185,7 +185,7 @@ curl -X GET "https://<ENVIRONMENT_URL>/v1/user?id=PvRoVxxiJ2gul3qLwKOVaJ0HCNs1" 
 ```
 
 &nbsp;
-### `POST /v1/kits` (Only staging yet)
+### Assign a kit to an user (Only staging yet)
 
 Assign a kit to an user
 
@@ -200,9 +200,6 @@ Assign a kit to an user
 #### Parameters
 
 *The patient data parameters are: height_feet, height_inches, weight, overall_health, mental_health, social_life, stress, has_cancer, has_diabetes, medicine_consumption, supplement_consumption, coffee_consumption, tobacco_consumption, waking_up_condition, trouble_sleeping, alcohol_consumption, sleep_hours, physical_activity_days*
-
-- **`barcode`** (string, Required): 
-  - **Description**: The kit number/barcode.
 
 - **`user_id`** (string, Required): 
   - **Description**: The user's id.
@@ -297,7 +294,7 @@ curl --request POST \
 Empty
 
 &nbsp;
-### `PATCH /v1/kits/{barcode}` (Only staging yet)
+### Update a kit information (Only staging yet)
 
 Update a kit information (registered_at) and patient data attached to the kit.
 
@@ -381,7 +378,7 @@ Empty
 
 
 &nbsp;
-### `GET /v1/results`
+### Retrieve user results
 
 Retrieves a user results by user Id or Email.
 
@@ -495,6 +492,37 @@ curl -X GET "https://<ENVIRONMENT_URL>/v1/results?id=PvRoVxxiJ2gul3qLwKOVaJ0HCNs
 	"ethnicity": "White"
 }
 ```
+
+### Generate a test kit (Available on Stating only)
+
+Create a kit on staging to validate the endpoints.
+
+#### Request
+
+**URL**: `/v1/generate-kits`  
+**Method**: `POST`  
+**Authentication**: Required
+
+#### Parameters
+
+- **`barcode`** (string): 
+  - **Description**: The barcode/kit_number
+
+#### Example Request
+
+```bash
+curl --request POST \
+  --url 'http://localhost:8080/v1/generate-kits?=' \
+  --header 'App-Key: 1234' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/10.0.0' \
+  --data '{
+	"barcode": "ABC-12345"
+}'
+```
+
+#### Response
+Empty
 
 ---
 
