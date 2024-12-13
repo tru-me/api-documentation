@@ -185,7 +185,7 @@ curl -X GET "https://<ENVIRONMENT_URL>/v1/user?id=PvRoVxxiJ2gul3qLwKOVaJ0HCNs1" 
 ```
 
 &nbsp;
-### Assign a kit to an user (Only staging yet)
+### Assign a kit to an user
 
 Assign a kit to an user
 
@@ -294,7 +294,7 @@ curl --request POST \
 Empty
 
 &nbsp;
-### Update a kit information (Only staging yet)
+### Update a kit information
 
 Update a kit information (registered_at) and patient data attached to the kit.
 
