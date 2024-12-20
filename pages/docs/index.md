@@ -524,6 +524,35 @@ curl --request POST \
 #### Response
 Empty
 
+### Enable Transactional Emails
+
+Enables or disables Transactional Emails
+
+#### Request
+
+**URL**: `/v1/settings/email`  
+**Method**: `PUT`  
+**Authentication**: Required
+
+#### Parameters
+
+- **`enable_emails`** (boolean): 
+  - **Description**: Wether emails should be enabled or not
+
+#### Example Request
+
+```bash
+curl --request POST \
+  --url 'http://localhost:8080/v1/settings/email' \
+  --header 'App-Key: 1234' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/10.0.0' \
+  --data '{
+	"enable_emails": true
+}'
+```
+
+
 ---
 
 ## Error Codes
@@ -535,4 +564,5 @@ Empty
 | 401         | Unauthorized              |
 | 404         | Not found                 |
 | 500         | Internal server error      |
+
 
