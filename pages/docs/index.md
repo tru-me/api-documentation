@@ -201,8 +201,7 @@ Retrieve all unregistered kit barcodes based on app key brand.
 curl --request GET \
   --url 'http://localhost:8080/v1/unregistered-kits?=' \
   --header 'App-Key: 1234' \
-  --header 'Content-Type: application/json' \
-  --header 'User-Agent: insomnia/10.0.0'
+  --header 'Content-Type: application/json'
 ```
 
 #### Response
@@ -540,7 +539,6 @@ curl --request POST \
   --url 'http://localhost:8080/v1/generate-kits?=' \
   --header 'App-Key: 1234' \
   --header 'Content-Type: application/json' \
-  --header 'User-Agent: insomnia/10.0.0' \
   --data '{
 	"barcode": "ABC-12345"
 }'
@@ -552,7 +550,7 @@ Empty
 ---
 
 ## Webhooks (Only Staging yet)
-When your app needs information about specific events that have occurred on a lab, it can subscribe to Trumelabs webhook topics as a mechanism for receiving near-real-time data about these events.
+When your app needs information about specific events occurring in a lab, it can subscribe to Trumelabs' webhook topics to receive near-real-time data about these events.
 
 ### Headers
 ```json
@@ -593,7 +591,6 @@ curl --request POST \
   --url 'http://localhost:8080/v1/webhooks?=' \
   --header 'App-Key: <YOUR_API_KEY>' \
   --header 'Content-Type: application/json' \
-  --header 'User-Agent: insomnia/10.0.0' \
   --data '{
 	"endpoint": "https://<YOUR_HOST>/<YOUR_ENDPOINT>",
 	"event_name": "KIT_PROCESSED"
@@ -624,8 +621,7 @@ Retrieve all registered webhooks
 curl --request GET \
   --url 'http://localhost:8080/v1/webhooks' \
   --header 'App-Key: 345' \
-  --header 'Content-Type: application/json' \
-  --header 'User-Agent: insomnia/10.0.0'
+  --header 'Content-Type: application/json'
 ```
 
 #### Response
@@ -657,7 +653,6 @@ curl --request DELETE \
   --url 'http://localhost:8080/v1/webhooks?=' \
   --header 'App-Key: 345' \
   --header 'Content-Type: application/json' \
-  --header 'User-Agent: insomnia/10.0.0' \
   --data '{
 	"endpoint": "http://localhost:3000/test-webhook"
 }'
@@ -678,7 +673,7 @@ curl --request DELETE \
 			"biological_age": 30.0,
 			"processed_date": "2024-12-23T21:55:27.397521",
 			"peer_biological_age_score": 100.0,
-			"share_link": "http://localhost:3000/share/xtNvdxgF08ISJy"
+			"share_link": "http://localhost:3000/share/xtNvdxgF08ISJy" //If the kit doesn't have an user, the share_link will be null.
 		}
 	],
 	"genetic_results": [
