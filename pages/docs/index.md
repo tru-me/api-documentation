@@ -183,6 +183,32 @@ curl -X GET "https://<ENVIRONMENT_URL>/v1/user?id=PvRoVxxiJ2gul3qLwKOVaJ0HCNs1" 
 	]
 }
 ```
+&nbsp;
+### Retrieve unregistered kits (Only staging yet)
+
+Retrieve all unregistered kit barcodes based on app key brand.
+
+#### Request
+
+**URL**: `/v1/unregistered-kits`  
+**Method**: `GET`  
+**Authentication**: Required
+
+
+#### Example Request
+
+```bash
+curl --request GET \
+  --url 'http://localhost:8080/v1/unregistered-kits?=' \
+  --header 'App-Key: 1234' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/10.0.0'
+```
+
+#### Response
+```
+["KIT_BARCODE_1", "KIT_BARCODE_2"]
+```
 
 &nbsp;
 ### Assign a kit to an user
@@ -492,9 +518,8 @@ curl -X GET "https://<ENVIRONMENT_URL>/v1/results?id=PvRoVxxiJ2gul3qLwKOVaJ0HCNs
 	"ethnicity": "White"
 }
 ```
-
+&nbsp;
 ### Generate a test kit (Available on Stating only)
-
 Create a kit on staging to validate the endpoints.
 
 #### Request
@@ -526,11 +551,229 @@ Empty
 
 ---
 
+## Webhooks (Only Staging yet)
+When your app needs information about specific events that have occurred on a lab, it can subscribe to Trumelabs webhook topics as a mechanism for receiving near-real-time data about these events.
+
+### Headers
+```json
+{
+ "X-Signature": "",
+ "X-Topic-Name": "KIT_PROCESSED"
+}
+```
+**X-Signature**: The payload signed with the webhook signature.
+
+**X-Topic-Name**: The name of the topic.
+
+&nbsp;
+### Events
+**KIT_PROCESSED**: When a kit result is processed
+
+&nbsp;
+### Registering a webhook
+Register an endpoint to receive webhook event
+
+#### Request
+
+**URL**: `/v1/webhooks`
+**Method**: `POST`  
+**Authentication**: Required
+
+#### Parameters
+
+- **`endpoint`** (string): 
+  - **Description**: The endpoint url (Should be a POST endpoint)
+- **`event_name`** (string):
+	- **Description**: e.g: KIT_PROCESSED
+
+#### Example Request
+
+```bash
+curl --request POST \
+  --url 'http://localhost:8080/v1/webhooks?=' \
+  --header 'App-Key: <YOUR_API_KEY>' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/10.0.0' \
+  --data '{
+	"endpoint": "https://<YOUR_HOST>/<YOUR_ENDPOINT>",
+	"event_name": "KIT_PROCESSED"
+}'
+```
+
+#### Response
+```json
+{
+	"signature": "ad8a7aa0f0288e45fa27407ee0983023"
+}
+```
+
+&nbsp;
+### Retrieve my webhooks
+Retrieve all registered webhooks 
+
+#### Request
+
+**URL**: `/v1/webhooks`
+**Method**: `GET`  
+**Authentication**: Required
+
+
+#### Example Request
+
+```bash
+curl --request GET \
+  --url 'http://localhost:8080/v1/webhooks' \
+  --header 'App-Key: 345' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/10.0.0'
+```
+
+#### Response
+```json
+[
+	{
+		"endpoint": "http://localhost:8080/test-webhook",
+		"signature": "18fa91d5bc680a2c458e6763120d25ed",
+		"created_at": "2024-12-24T18:26:00"
+	}
+]
+```
+
+&nbsp;
+### Delete a webhook
+Delete a webhook
+
+#### Request
+
+**URL**: `/v1/webhooks`
+**Method**: `DELETE`  
+**Authentication**: Required
+
+
+#### Example Request
+
+```bash
+curl --request DELETE \
+  --url 'http://localhost:8080/v1/webhooks?=' \
+  --header 'App-Key: 345' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/10.0.0' \
+  --data '{
+	"endpoint": "http://localhost:3000/test-webhook"
+}'
+```
+
+&nbsp;
+### Events Response
+**KIT_PROCESSED**:
+```json
+{
+	"bio_age_results": [
+		{
+			"kit_barcode": "TEST_WEBHOOK",
+			"status": "PROCESSED",
+			"chronological_age": 30.52,
+			"collection_date": "2024-12-23T21:51:45.608741",
+			"received_date": "2024-12-23T21:52:10.428050",
+			"biological_age": 30.0,
+			"processed_date": "2024-12-23T21:55:27.397521",
+			"peer_biological_age_score": 100.0,
+			"share_link": "http://localhost:3000/share/xtNvdxgF08ISJy"
+		}
+	],
+	"genetic_results": [
+		{
+			"kit_barcode": "TEST_WEBHOOK2",
+			"status": "PROCESSED",
+			"markers": [
+				{
+					"marker": "rs1801131",
+					"risk": "heterozygous",
+					"gene": "MTHFR",
+					"position": "A1298C (Glu429Ala)"
+				},
+				{
+					"marker": "rs1801133",
+					"risk": "homozygous_normal",
+					"gene": "MTHFR",
+					"position": "C677T (Ala222Val)"
+				},
+				{
+					"marker": "rs1805087",
+					"risk": "homozygous_risk",
+					"gene": "MTR",
+					"position": "A2756G (Asp856Gly)"
+				},
+				{
+					"marker": "rs121913578",
+					"risk": "homozygous_normal",
+					"gene": "MTR",
+					"position": "C3518T (Pro1173Leu)"
+				},
+				{
+					"marker": "rs1801394",
+					"risk": "homozygous_risk",
+					"gene": "MTRR",
+					"position": "A66G (lle49Met)"
+				},
+				{
+					"marker": "rs121918608",
+					"risk": "homozygous_normal",
+					"gene": "AHCY",
+					"position": "Y115C (TYR143CYS)"
+				},
+				{
+					"marker": "rs41301825",
+					"risk": "homozygous_normal",
+					"gene": "AHCY",
+					"position": "G367A (Gly95Arg)"
+				},
+				{
+					"marker": "rs13043752",
+					"risk": "homozygous_normal",
+					"gene": "AHCY",
+					"position": "C112T (Arg10Trp)"
+				},
+				{
+					"marker": "rs4633",
+					"risk": "homozygous_normal",
+					"gene": "COMT",
+					"position": "G304A (Ala52/102Thr)"
+				},
+				{
+					"marker": "rs4680",
+					"risk": "homozygous_normal",
+					"gene": "COMT",
+					"position": "G472A(Val108/158Met)"
+				}
+			]
+		}
+	]
+}
+```
+
+&nbsp;
+### Validating a webhook request
+This is an example of how to validate the payload you received:
+
+```python
+def create_signature(secret, payload):
+   secret_bytes = secret.encode('utf-8')
+   payload_bytes = payload.encode('utf-8')
+   
+   signature = hmac.new(secret_bytes, payload_bytes, hashlib.sha256).digest()
+   return base64.b64encode(signature).decode('utf-8')
+
+expected_signature = create_signature(secret, payload)
+hmac.compare_digest(expected_signature, received_signature)
+```
+
 ## Error Codes
 
 | Status Code | Description               |
 | ----------- | ------------------------- |
 | 200         | Success                   |
+| 204         | No Content                |
 | 400         | Bad request               |
 | 401         | Unauthorized              |
 | 404         | Not found                 |
