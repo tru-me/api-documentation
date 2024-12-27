@@ -559,7 +559,7 @@ When your app needs information about specific events occurring in a lab, it can
  "X-Topic-Name": "KIT_PROCESSED"
 }
 ```
-**X-Signature**: The payload signed with the webhook signature.
+**X-Signature**: The payload signed with the webhook secret.
 
 **X-Topic-Name**: The name of the topic.
 
@@ -600,7 +600,7 @@ curl --request POST \
 #### Response
 ```json
 {
-	"signature": "ad8a7aa0f0288e45fa27407ee0983023"
+	"secret": "ad8a7aa0f0288e45fa27407ee0983023"
 }
 ```
 
@@ -629,7 +629,7 @@ curl --request GET \
 [
 	{
 		"endpoint": "http://localhost:8080/test-webhook",
-		"signature": "18fa91d5bc680a2c458e6763120d25ed",
+		"secret": "18fa91d5bc680a2c458e6763120d25ed",
 		"created_at": "2024-12-24T18:26:00"
 	}
 ]
