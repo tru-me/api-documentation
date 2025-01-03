@@ -184,7 +184,7 @@ curl -X GET "https://<ENVIRONMENT_URL>/v1/user?id=PvRoVxxiJ2gul3qLwKOVaJ0HCNs1" 
 }
 ```
 &nbsp;
-### Retrieve unregistered kits (Only staging yet)
+### Retrieve unregistered kits
 
 Retrieve all unregistered kit barcodes based on app key brand.
 
@@ -549,7 +549,7 @@ Empty
 
 ---
 
-## Webhooks (Only Staging yet)
+## Webhooks
 When your app needs information about specific events occurring in a lab, it can subscribe to Trumelabs' webhook topics to receive near-real-time data about these events.
 
 ### Headers
