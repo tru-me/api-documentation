@@ -112,6 +112,7 @@ curl -X GET "https://<ENVIRONMENT_URL>/v1/user?id=PvRoVxxiJ2gul3qLwKOVaJ0HCNs1" 
 
 ```json
 {
+	"id": "vd7KETc6UHuGbeMRv9EnFdEh0mfD",
 	"first_name": "Test",
 	"last_name": "Testing",
 	"email": "trumelabs@gmail.com",
