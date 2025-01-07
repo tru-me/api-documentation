@@ -542,7 +542,7 @@ Enables or disables Transactional Emails
 #### Example Request
 
 ```bash
-curl --request POST \
+curl --request PUT \
   --url 'http://localhost:8080/v1/settings/email' \
   --header 'App-Key: 1234' \
   --header 'Content-Type: application/json' \
