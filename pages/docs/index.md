@@ -18,7 +18,7 @@ App-Key: YOUR_TOKEN
 
 ### Create user
 
-Creates a new TruMe user.
+Creates a new user.
 
 #### Request
 
@@ -59,7 +59,7 @@ Creates a new TruMe user.
 
 ```bash
 curl --request POST \
-  --url 'http://<ENVIRONMENT_URL>/v1/user?id=vd7KETc6UHuGbeMRv9EnFdEh0mfD' \
+  --url 'http://<ENVIRONMENT_URL>/v1/user' \
   --header 'App-Key: YOUR-TOKEN' \
   --header 'Content-Type: application/json' \
   --data '{
@@ -81,6 +81,60 @@ curl --request POST \
 	"user_id": "PvRoVxxiJ2gul3qLwKOVaJ0HCNs1"
 }
 ```
+&nbsp;
+### Update an user
+
+Update an user.
+
+#### Request
+
+**URL**: `/v1/user/{id}`  
+**Method**: `PATCH`  
+**Authentication**: Required
+
+#### Parameters
+
+- **`first_name`** (string): 
+  - **Description**: The user's first name.
+
+- **`last_name`** (string): 
+  - **Description**: The user's last name.
+
+- **`date_of_birth`** (isodate): 
+  - **Description**: User's date of birth. e.g: 1994-06-17
+
+- **`biological_sex`** (string, Optional): 
+  - **Description**: ['Male', 'Female', 'Prefer not to answer']
+
+- **`gender`** (string, Optional): 
+  - **Description**: ['Male', 'Female', 'Prefer not to answer']
+
+- **`country`** (string, Optional): 
+  - **Description**: e.g: United States Of America
+
+- **`ethnicity`** (string, Optional): 
+  - **Description**: ['White', 'Hispanic and Latino', 'Black / African American', 'Asian', 'American Indian or Alaska Native', 'Native Hawaiian or Other Pacific Islander', 'Other']
+
+#### Example Request
+
+```bash
+curl --request PATCH \
+  --url 'http://<ENVIRONMENT_URL>/v1/user/vd7KETc6UHuGbeMRv9EnFdEh0mfD' \
+  --header 'App-Key: YOUR-TOKEN' \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"first_name": "John",
+	"last_name": "Doe",
+	"date_of_birth": "1994-06-17",
+	"biological_sex": "Male",
+	"country": "United States Of America",
+	"ethnicity": "White"
+}'
+```
+
+#### Response
+
+Empty
 
 &nbsp;
 ### Retrieve an user
