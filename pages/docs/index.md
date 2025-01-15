@@ -586,12 +586,46 @@ Create a kit on staging to validate the endpoints.
 
 - **`barcode`** (string): 
   - **Description**: The barcode/kit_number
+- **`test_type`** (string): 
+  - **Description**: 1 - Folate, 2 - Age
 
 #### Example Request
 
 ```bash
 curl --request POST \
   --url 'http://localhost:8080/v1/generate-kits?=' \
+  --header 'App-Key: 1234' \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"barcode": "ABC-12345",
+	"test_type": 2
+}'
+```
+
+#### Response
+Empty
+
+&nbsp;
+### Mock a kit result (Available on Stating only)
+This endpoint is to simulate the kit result processing on staging.
+Important: This is a random result and we are generating the pdf here. It's just to allow you receive the result by webhook and get the result from API.
+
+#### Request
+
+**URL**: `/v1/mock-kit-result`  
+**Method**: `POST`  
+**Authentication**: Required
+
+#### Parameters
+
+- **`barcode`** (string): 
+  - **Description**: The barcode/kit_number
+
+#### Example Request
+
+```bash
+curl --request POST \
+  --url 'http://localhost:8080/v1/mock-kit-result?=' \
   --header 'App-Key: 1234' \
   --header 'Content-Type: application/json' \
   --data '{
