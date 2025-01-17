@@ -179,6 +179,7 @@ curl -X GET "https://<ENVIRONMENT_URL>/v1/user?id=PvRoVxxiJ2gul3qLwKOVaJ0HCNs1" 
 			"in_lab_date": "2024-08-011T02:11:59.368403",
 			"processed_date": "2024-08-15T02:11:59.368403",
 			"barcode": "TU2Q6F72",
+			"status": "PROCESSED",
 			"health_status": {
 				"alcohol_consumption": "0",
 				"waking_up_condition": "Yes",
@@ -210,6 +211,7 @@ curl -X GET "https://<ENVIRONMENT_URL>/v1/user?id=PvRoVxxiJ2gul3qLwKOVaJ0HCNs1" 
 			"in_lab_date": "1098-10-15T00:00:00",
 			"processed_date": "1098-10-16T00:00:00",
 			"barcode": "TU33NQ34",
+			"status": "PROCESSED",
 			"health_status": {
 				"alcohol_consumption": "0",
 				"waking_up_condition": "Yes",
@@ -752,6 +754,7 @@ curl --request DELETE \
 **KIT_PROCESSED**:
 ```json
 {
+	"status": "PROCESSED",
 	"bio_age_results": [
 		{
 			"kit_barcode": "TEST_WEBHOOK",
