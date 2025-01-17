@@ -838,6 +838,7 @@ curl --request DELETE \
 
 &nbsp;
 ### Validating a webhook request
+Our signature is encoded as base64 to send through the request. Make sure you encode your signature to base64 to compare.
 This is an example of how to validate the payload you received:
 
 ```python
@@ -851,6 +852,10 @@ def create_signature(secret, payload):
 expected_signature = create_signature(secret, payload)
 hmac.compare_digest(expected_signature, received_signature)
 ```
+&nbsp;
+### Webhook response
+Please send us the status 200 or 201 when you process successfully to avoid retrying the webhook request.
+
 
 ## Error Codes
 
