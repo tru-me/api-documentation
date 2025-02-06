@@ -657,6 +657,7 @@ When your app needs information about specific events occurring in a lab, it can
 &nbsp;
 ### Events
 **KIT_PROCESSED**: When a kit result is processed
+**KIT_IN_LAB**: When a kit result is received by the lab.
 
 &nbsp;
 ### Registering a webhook
@@ -751,6 +752,17 @@ curl --request DELETE \
 
 &nbsp;
 ### Events Response
+**KIT_PROCESSED**:
+```json
+{
+	"status": "IN_LAB",
+	"barcode": "ABC-5689",
+	"type": "Age",
+	"scanned_at": "2025-02-06 15:54:23"
+}
+```
+
+&nbsp;
 **KIT_PROCESSED**:
 ```json
 {
