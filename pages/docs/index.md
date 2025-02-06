@@ -752,7 +752,7 @@ curl --request DELETE \
 
 &nbsp;
 ### Events Response
-**KIT_PROCESSED**:
+**KIT_IN_LAB**:
 ```json
 {
 	"status": "IN_LAB",
