@@ -657,6 +657,7 @@ When your app needs information about specific events occurring in a lab, it can
 &nbsp;
 ### Events
 **KIT_PROCESSED**: When a kit result is processed
+
 **KIT_IN_LAB**: When a kit result is received by the lab.
 
 &nbsp;
